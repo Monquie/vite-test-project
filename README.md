@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+## Features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 1. Clean React Setup
 
-Currently, two official plugins are available:
+**Requirement:** Use Vite to set up a fresh React project and remove all code except the React icon.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 2. Click-to-Reverse Rotation
 
-## React Compiler
+**Requirement:** The React icon rotates and the direction reverses each time the user clicks it.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Implementation:**
 
-## Expanding the ESLint configuration
+- React logo continuously rotates using CSS animations
+- Click toggles between clockwise and counter-clockwise rotation
+- Uses `useState` hook to track rotation direction
+- Custom keyframe animations: `logo-spin` and `logo-spin-reverse`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. Cursor Position Scaling
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Requirement:** Adjust the size of the React icon depending on the position of the cursor on the page.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Implementation:**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Icon size changes dynamically based on mouse cursor distance from viewport center
+- Scale range: 0.5x (at center) to 2x (at edges)
+- Uses `useEffect` hook to track mouse movement
+- Smooth scaling with CSS transforms
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 4. Idle Timer Display
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Requirement:** Display the amount of time the mouse has been WITHIN the visible page, but NOT moving.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Implementation:**
+
+- Text below icon shows elapsed time since mouse stopped moving
+- Timer starts after 100ms of no mouse movement
+- Resets to 0 whenever mouse moves
+- Updates every 0.1 seconds for precise tracking
+- Uses `setTimeout` and `setInterval` for timing
+- Properly cleans up timers on unmount
+
+### 5. Feature Control Sidebar
+
+**Requirement:** Add a sidebar that can be shown/hidden where any of the previous changes can be switched on or off.
+
+**Implementation:**
+
+- Slide-in drawer from the right side of the screen
+- Toggle button in top-right corner
+- Three toggleable features:
+  - **Rotation Animation** - Enable/disable spinning effect
+  - **Mouse Position Scaling** - Enable/disable cursor-based resizing
+  - **Idle Timer** - Enable/disable idle time counter
+
+## Prerequisites
+
+- Node.js 22+ (required for Vite 7)
+- npm 10+
+
+## Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd vite-sample-project
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
