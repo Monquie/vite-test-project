@@ -25,8 +25,22 @@
   }
 }
 
+@keyframes logo-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .logo {
     animation: logo-spin infinite 20s linear;
+    cursor: pointer;
+  }
+
+  .logo.reverse {
+    animation: logo-spin-reverse infinite 20s linear;
   }
 }
