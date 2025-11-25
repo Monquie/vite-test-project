@@ -61,7 +61,7 @@
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone git@github.com:Monquie/vite-test-project.git
 cd vite-sample-project
 
 # Install dependencies
