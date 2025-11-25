@@ -37,7 +37,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .logo {
     animation: logo-spin infinite 20s linear;
-    cursor: pointer;
+    cursor: pointer; /* cursor: pointer changes the mouse cursor to a pointing hand */
   }
 
   .logo.reverse {
