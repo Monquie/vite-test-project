@@ -70,3 +70,6 @@ npm install
 # Start development server
 npm run dev
 ```
+
+## Sample Video
+https://drive.google.com/file/d/1PAs6boDsk3PV69U1700oQ9JrB9OFcCHz/view?usp=sharing
